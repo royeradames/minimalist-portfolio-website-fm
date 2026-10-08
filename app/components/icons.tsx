@@ -36,14 +36,6 @@ export function DownArrowsIcon({ className }: IconProps) {
   );
 }
 
-export function ArrowIcon({ className, direction }: IconProps & { direction: "left" | "right" }) {
-  return (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" aria-hidden="true" focusable="false">
-      <path fill="none" stroke="currentColor" d={direction === "left" ? "M9 0L1 8l8 8" : "M1 0l8 8-8 8"} />
-    </svg>
-  );
-}
-
 export function GithubIcon({ className }: IconProps) {
   return (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" aria-hidden="true" focusable="false">
