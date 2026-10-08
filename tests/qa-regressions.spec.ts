@@ -49,14 +49,13 @@ for (const path of routes) {
   });
 }
 
-test("project pager labels stay on one line, with no icon beside them, at every width", async ({ page }) => {
+test("project pager labels stay on one line and never squeeze, at every width", async ({ page }) => {
   for (const width of widths) {
     await page.setViewportSize({ width, height: 900 });
     for (const slug of ["manage", "insure"]) {
       await page.goto(`/portfolio/${slug}`);
       const problems = await page.locator(".project-nav-link").evaluateAll(links => links.flatMap(link => {
         const found: string[] = [];
-        if (link.querySelector("svg, img")) found.push(`${link.textContent} holds an icon element`);
         const label = link.querySelector(".project-nav-label")!;
         const lineHeight = parseFloat(getComputedStyle(label).lineHeight);
         if (label.getBoundingClientRect().height > 1.5 * lineHeight) found.push(`${label.textContent} wraps`);

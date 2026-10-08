@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContactCta } from "../../components/contact-cta";
+import { ArrowIcon } from "../../components/icons";
 import { Picture } from "../../components/picture";
 import { pageMetadata, projectBackground, projectNeighbours, projects, siteName } from "../../site";
 
@@ -61,14 +62,14 @@ export default async function ProjectPage({ params }: { params: Params }) {
       </article>
       <nav className="project-nav container" aria-label="Projects">
         <Link href={`/portfolio/${previous.slug}`} className="project-nav-link project-nav-previous" rel="prev">
-          <span className="project-nav-arrow" aria-hidden="true" />
+          <ArrowIcon direction="left" className="project-nav-arrow" />
           <span className="project-nav-text">
             <span className="project-nav-title">{previous.title}</span>
             <span className="project-nav-label">Previous Project</span>
           </span>
         </Link>
         <Link href={`/portfolio/${next.slug}`} className="project-nav-link project-nav-next" rel="next">
-          <span className="project-nav-arrow" aria-hidden="true" />
+          <ArrowIcon direction="right" className="project-nav-arrow" />
           <span className="project-nav-text">
             <span className="project-nav-title">{next.title}</span>
             <span className="project-nav-label">Next Project</span>

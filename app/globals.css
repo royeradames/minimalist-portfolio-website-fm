@@ -123,10 +123,6 @@ main { display: block; margin-top: 2.125rem; }
 .detail-preview img { width: 100%; height: auto; aspect-ratio: 313 / 197; object-fit: cover; }
 .project-nav { display: grid; grid-template-columns: 1fr 1fr; margin-top: 4rem; border-block: 1px solid var(--slate-800-15); }
 .project-nav-link { display: flex; flex-direction: column; gap: 1rem; min-width: 0; padding-block: 1.25rem; text-decoration: none; }
-/* Decorative chevron drawn in CSS, so the link holds only its title and label. */
-.project-nav-arrow { flex: none; width: 10px; height: 16px; background: currentColor; -webkit-mask: var(--chevron) center / contain no-repeat; mask: var(--chevron) center / contain no-repeat; }
-.project-nav-previous .project-nav-arrow { --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16'%3E%3Cpath fill='none' stroke='black' d='M9 0L1 8l8 8'/%3E%3C/svg%3E"); }
-.project-nav-next .project-nav-arrow { --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16'%3E%3Cpath fill='none' stroke='black' d='M1 0l8 8-8 8'/%3E%3C/svg%3E"); }
 .project-nav-previous { padding-right: 1rem; border-right: 1px solid var(--slate-800-15); }
 .project-nav-next { align-items: flex-end; padding-left: 1rem; text-align: right; }
 .project-nav-text { display: flex; flex-direction: column; }
