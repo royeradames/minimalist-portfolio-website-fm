@@ -1,7 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
 
-// Regression checks for the October 8 width-sweep findings (overflow, crowded-header, squeezed,
-// meta-identity). Each fails on the shipped layout and passes once it is fixed.
+// Regression checks for the October 8 width-sweep findings (overflow, squeezed, meta-identity).
+// Each fails on the shipped layout and passes once it is fixed. The pager's crowded-header flag is a
+// reviewed false positive (a chevron beside or above a title and label stacked by design), so it has no test.
 
 const routes = ["/", "/portfolio", "/contact", "/portfolio/manage", "/portfolio/bookmark", "/portfolio/insure", "/portfolio/fylo"];
 const widths = [320, 340, 360, 374, 375, 560, 768, 1024, 1152, 1440, 1920];
