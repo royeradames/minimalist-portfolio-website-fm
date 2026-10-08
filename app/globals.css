@@ -57,18 +57,19 @@ main:focus, section:focus { outline: none; }
 .ruled { border-block: 1px solid var(--slate-800-15); }
 
 /* Header and navigation. */
-.site-header { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; height: 2rem; margin-top: 2rem; }
+/* The header is as tall as its 44px controls (so nothing spills out of it); 1.625rem keeps the logo where the 2rem bar put it. */
+.site-header { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; min-height: 2.75rem; margin-top: 1.625rem; }
 .logo-link { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--slate-800); }
 .logo-link:hover { color: var(--teal-400); }
-.menu-toggle { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; margin-right: -.625rem; padding: 0; border: 0; background: transparent; color: var(--slate-800); cursor: pointer; }
+.menu-toggle { display: grid; place-items: center end; width: 2.75rem; height: 2.75rem; padding: 0; border: 0; background: transparent; color: var(--slate-800); cursor: pointer; }
 .menu-toggle:hover { color: var(--teal-400); }
-.site-nav { display: none; position: absolute; top: 3.5rem; right: 0; width: 13.9375rem; padding: 2rem 1rem; background: var(--slate-800); }
+.site-nav { display: none; position: absolute; top: 3.875rem; right: 0; width: 13.9375rem; padding: 2rem 1rem; background: var(--slate-800); }
 .site-nav[data-open] { display: block; }
 .site-nav ul { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
 .site-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--white); text-decoration: none; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--teal-400); }
 
-main { display: block; margin-top: 2.5rem; }
+main { display: block; margin-top: 2.125rem; }
 
 /* Home hero. */
 .home-hero { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -97,7 +98,8 @@ main { display: block; margin-top: 2.5rem; }
 .footer-links a { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: none; }
 .footer-links a:hover { color: var(--teal-400); }
 .social-links { display: flex; align-items: center; gap: .5rem; }
-.social-links a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; margin: -.625rem -.375rem; transition: color .15s; }
+/* 32px-wide, 44px-tall links keep the design pitch (24px icons, 16px apart) with no negative side margins, so nothing spills past the list. */
+.social-links a { display: grid; place-items: center; width: 2rem; height: 2.75rem; margin-block: -.625rem; transition: color .15s; }
 .social-links a:hover { color: var(--teal-400); }
 .credit { padding-bottom: 1.5rem; color: var(--white); font-size: 1rem; line-height: 1.5; text-align: center; }
 .credit span { display: block; }
@@ -120,12 +122,18 @@ main { display: block; margin-top: 2.5rem; }
 .detail-previews { display: flex; flex-direction: column; gap: 2rem; margin-top: 2.5rem; }
 .detail-preview img { width: 100%; height: auto; aspect-ratio: 313 / 197; object-fit: cover; }
 .project-nav { display: grid; grid-template-columns: 1fr 1fr; margin-top: 4rem; border-block: 1px solid var(--slate-800-15); }
-.project-nav-link { display: flex; flex-direction: column; gap: 1rem; padding-block: 1.25rem; text-decoration: none; }
+.project-nav-link { display: flex; flex-direction: column; gap: 1rem; min-width: 0; padding-block: 1.25rem; text-decoration: none; }
 .project-nav-previous { padding-right: 1rem; border-right: 1px solid var(--slate-800-15); }
 .project-nav-next { align-items: flex-end; padding-left: 1rem; text-align: right; }
 .project-nav-text { display: flex; flex-direction: column; }
 .project-nav-title { font-family: var(--font-ibarra), serif; font-size: 2rem; line-height: 1.125; letter-spacing: -.29px; }
 .project-nav-label { color: var(--slate-800-50); line-height: 1.875; }
+/* Below 375px two columns would squeeze "Previous Project"; stack the links instead. */
+@media (max-width: 23.375rem) {
+  .project-nav { grid-template-columns: 1fr; }
+  .project-nav-previous { padding-right: 0; border-right: 0; border-bottom: 1px solid var(--slate-800-15); }
+  .project-nav-next { padding-left: 0; }
+}
 .project-nav-link:hover .project-nav-title { color: var(--teal-400); }
 .project-detail + .project-nav + .contact-cta { margin-top: 4rem; }
 
@@ -152,13 +160,13 @@ textarea.field-control { min-height: 6rem; resize: vertical; }
 /* Tablet (Figma 768 frames). */
 @media (min-width: 48rem) {
   :root { --gutter: 2.5rem; --section-gap: 6rem; --footer-gap: 6rem; }
-  .site-header { margin-top: 4rem; }
+  .site-header { margin-top: 3.625rem; }
   .menu-toggle { display: none; }
   .site-nav { display: block; position: static; width: auto; padding: 0; background: none; }
   .site-nav ul { flex-direction: row; gap: 2.5rem; }
   .site-nav a { min-height: 2.75rem; margin-block: -.375rem; color: var(--slate-800); }
-  main { margin-top: 5.875rem; }
-  main:has(> .home-hero) { margin-top: 2.9375rem; }
+  main { margin-top: 5.5rem; }
+  main:has(> .home-hero) { margin-top: 2.5625rem; }
 
   .home-hero { position: relative; display: block; }
   .home-hero-image img { height: 37.5rem; aspect-ratio: auto; }
@@ -206,8 +214,8 @@ textarea.field-control { min-height: 6rem; resize: vertical; }
 /* Desktop (Figma 1440 frames). */
 @media (min-width: 72rem) {
   :root { --section-gap: 9.375rem; --footer-gap: 9.375rem; }
-  main { margin-top: 5.875rem; }
-  main:has(> .home-hero) { margin-top: 3.375rem; }
+  main { margin-top: 5.5rem; }
+  main:has(> .home-hero) { margin-top: 3rem; }
   .heading-1 { font-size: 3.125rem; line-height: 1; letter-spacing: -.45px; }
 
   .home-intro { width: 27.8125rem; padding: 3.3125rem 3.4375rem 0 0; gap: 3.5rem; }

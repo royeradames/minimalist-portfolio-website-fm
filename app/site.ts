@@ -1,5 +1,7 @@
 export const siteName = "Alex Spencer";
 export const siteUrl = "https://minimalist-portfolio-website-fm.royeradames.com";
+/** WebSite JSON-LD, emitted by the root layout so every page declares the same site. */
+export const websiteJsonLd = { "@context": "https://schema.org", "@type": "WebSite", name: siteName, url: siteUrl } as const;
 export const challengeUrl = "https://www.frontendmentor.io/challenges/minimalist-portfolio-website-LMy-ZRyiE";
 
 export type Project = {
