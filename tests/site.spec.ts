@@ -30,7 +30,7 @@ test("every route has a unique title, description, one h1, landmarks and the cur
     await expect(page.getByRole("contentinfo")).toContainText("Challenge by Frontend Mentor. Built by Royer Adames.");
     const current = page.getByRole("navigation", { name: "Main" }).locator('[aria-current="page"]');
     await expect(current).toHaveText(route.nav);
-    await expect(current).toHaveCSS("color", "rgb(95, 180, 162)");
+    await expect(current).toHaveCSS("color", "rgb(52, 123, 108)");
     for (const image of await page.locator("main img").all()) {
       await image.scrollIntoViewIfNeeded();
       await expect(image).not.toHaveAttribute("alt", "");
@@ -61,7 +61,7 @@ test("uses the Figma type presets and colours", async ({ page }) => {
   await expect(page.locator(".button-primary")).toHaveCSS("background-color", "rgb(32, 58, 76)");
   await expect(page.locator(".site-footer")).toHaveCSS("background-color", "rgb(51, 50, 61)");
   await page.goto("/portfolio/manage");
-  await expect(page.locator(".detail-skills")).toHaveCSS("color", "rgb(95, 180, 162)");
+  await expect(page.locator(".detail-skills")).toHaveCSS("color", "rgb(52, 123, 108)");
   await expect(page.locator(".heading-3").first()).toHaveCSS("font-size", "32px");
 });
 
@@ -182,7 +182,7 @@ test("contact form shows required errors and focuses the first invalid field", a
   await expect(name).toHaveAttribute("aria-invalid", "true");
   await expect(name).toHaveAttribute("aria-describedby", "name-error");
   await expect(name).toHaveCSS("border-top-color", "rgb(244, 48, 48)");
-  await expect(page.locator(".field-error").first()).toHaveCSS("color", "rgb(244, 48, 48)");
+  await expect(page.locator(".field-error").first()).toHaveCSS("color", "rgb(189, 23, 23)");
   await name.fill("Jane Appleseed");
   await page.getByLabel("Email Address").fill("jane#example.com");
   await send.click();
@@ -248,8 +248,8 @@ test("keyboard users can skip to content and see hover and focus states", async 
   await expect(portfolio).toHaveCSS("color", "rgb(255, 255, 255)");
   const about = page.getByRole("link", { name: "About Me" });
   await about.hover();
-  await expect(about).toHaveCSS("background-color", "rgb(95, 180, 162)");
+  await expect(about).toHaveCSS("background-color", "rgb(52, 123, 108)");
   const navLink = page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Portfolio" });
   await navLink.hover();
-  await expect(navLink).toHaveCSS("color", "rgb(95, 180, 162)");
+  await expect(navLink).toHaveCSS("color", "rgb(52, 123, 108)");
 });
