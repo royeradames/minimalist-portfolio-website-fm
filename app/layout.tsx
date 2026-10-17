@@ -5,8 +5,10 @@ import { SiteHeader } from "./components/site-header";
 import { siteName, siteUrl, websiteJsonLd } from "./site";
 import "./globals.css";
 
-const ibarra = Ibarra_Real_Nova({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-ibarra", display: "swap" });
-const publicSans = Public_Sans({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-public-sans", display: "swap" });
+// Not preloaded: text paints at once in the size-matched fallback (display: swap), so the fonts
+// needn't compete with the first paint.
+const ibarra = Ibarra_Real_Nova({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-ibarra", display: "swap", preload: false });
+const publicSans = Public_Sans({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-public-sans", display: "swap", preload: false });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
