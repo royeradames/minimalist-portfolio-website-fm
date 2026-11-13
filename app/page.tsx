@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ContactCta } from "./components/contact-cta";
 import { DownArrowsIcon } from "./components/icons";
 import { Picture } from "./components/picture";
-import { pageMetadata, siteName, siteUrl } from "./site";
+import { pageMetadata, siteName } from "./site";
 
 export const metadata: Metadata = pageMetadata({
   title: `${siteName} | Front-end developer portfolio`,
@@ -11,12 +11,9 @@ export const metadata: Metadata = pageMetadata({
   path: "/",
 });
 
-const websiteJsonLd = { "@context": "https://schema.org", "@type": "WebSite", name: siteName, url: siteUrl };
-
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <section className="home-hero container" aria-labelledby="home-title">
         <Picture folder="homepage" name="image-homepage-hero" alt="Manage landing page on a desktop monitor, one of Alex’s projects" width={311} height={271} className="home-hero-image" priority />
         <div className="home-intro">
